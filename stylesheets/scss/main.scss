@@ -19,7 +19,8 @@
 /* Document
    ========================================================================== */
 /* Body */
-html, body{
+html, body {
+
     font-size: 100%;
     font-family: "source_sans_proregular", sans-serif;
 }
@@ -90,6 +91,7 @@ textarea {
   font-family: sans-serif; }
 
 body {
+  display: tableta;
   margin: 0;
   font-size: 1em;
   line-height: 1.4;
@@ -572,7 +574,7 @@ header[role="banner"] {
   @include clearfix;
 }
 #main-container {
-    -webkit-transform: translateZ(0);
+   @include preserve-3d;
 }
 div[role="main"] {
   position: relative;
@@ -580,6 +582,7 @@ div[role="main"] {
   text-align: center;
 }
 .wrapper {
+   @include preserve-3d;
   margin: 0 auto;
   @include clearfix;
   h1 {
@@ -595,49 +598,104 @@ div[role="main"] {
       padding: 0;
       margin: 0 auto;
     }
-    
     .flip-container {
 
+     /* -webkit-transform-style: preserve-3d;
+       @include transform(translateZ(-1em));*/
+      /*  @include preserve-3d;*/
       min-width: 23em;
       position: relative;
       @include clearfix;
       margin: 2em;
       padding: 0;
+
       /* entire container, keeps perspective */
      /* @include perspective(900px);*/
-      @include preserve-3d;
+     
       .flip-content3D {
+     /*   @include preserve-3d;
+        @include transform(translateZ(-1em));*/
         position: relative;
-        z-index: 1000;
         @include clearfix;
         width: 100%;
         height: 300px;
         padding: 0;
         margin: 0;
-        figure {
+          figure {
+          padding-top: 20%;
           @include perspective(300px);
           @include backface-visibility(hidden);
-          -webkit-transform: translate3d(0,0,0);
           position: absolute;
           width: 100%;
           height: 100%;
-          @include transition(all, 0.5s, ease, 500ms);
           @include rounded(20);
-          @include box-shadow-custom(0px, 0px, 5px, $greydarkest);
+          @include box-shadow-custom(0px, 0px, 15px, $greydarkest);
           border: 4px solid $greydarkest;
-          &.front { 
-            z-index: 900;  
-            display: block;  
+          p { 
+           font-size: 1.5em;
+            font-family: "quicksandregular", sans-serif;
+         }
+          &.front {
+            @include transition(all, 0.5s, ease, 500ms);
+
+/*             @include transform(translateZ(-800em)); // orders the back side
+*/          display: block;  
             @include rotateX(0deg);
+            height: 300px;/*added height here and fixed z-index issue*/
             text-shadow: 0 0 3px $greydarkest;
             color: $white;
+
+            h2 {
+              margin-bottom: 2px;
+              font-size:2em;
+              text-transform: uppercase;
+              color: $greymid;
+            }
+            h3 {
+              font-size:2.3em;
+              letter-spacing: -2px;
+              text-transform: uppercase;
+              margin-top: -10px;
+            }
           }
           &.back {
-            z-index: 800; 
+            z-index:900; // only necessary for flat (transform-style);
+            @include transform(translateZ(800em)); // orders the back side
+            width: 26em;
+            height: auto;
+            min-height: 300px;
+            @include transition(all, 0.5s, ease, 500ms);
+            padding-top: 5%;
+            margin-left: -8%;
             display: block;
-            @include rotateX(-180deg); 
-            background:$pink;
+            @include rotateX(-180deg);
             color: $white;
+            text-shadow: 0 0 3px #111;
+            &.one,
+            &.five,
+            &.nine,
+            &.thirteen {
+              background: $pink; 
+            } 
+            &.two,
+            &.six,
+            &.ten,
+            &.fourteen {
+             
+              background: $orange; 
+            }
+            &.three,
+            &.seven,
+            &.eleven,
+            &.fifteen {
+              background: $blueaqua; 
+            }
+            &.four,
+            &.eight,
+            &.twelve,
+            &.sixteen {
+              background: $green; 
+            }   
           }
          } 
         &:hover, 
@@ -649,10 +707,9 @@ div[role="main"] {
                  @include rotateX(180deg);
               }
               &.back {
-                z-index: 950;
                  @include perspective(300px);
                  @include rotateX(0deg);
-
+             
               }
             }
           }
@@ -672,7 +729,8 @@ div[role="main"] {
 
 /* Fluid Grid */
 .col {
-  float: left;
+ /* float: left;*/
+ display: inline-block;
   padding-left: 10px;
   padding-right: 10px;
 /*  border: 1px solid $bluelight;*/
@@ -875,30 +933,37 @@ nter-text { text-align: center; }
   left: -9999em;
 }
 /* ==========================================================================
-/* mobile landscape 30em;//480px  and down) */ 
+/* mobile landscape 30em;//480px  */ 
 /* ========================================================================== */
 /*$tablet-container-width:              48em;//768px /* Small devices (tablets, 768px and up) */
 /*$desktop-container-width:             62em;//992px /* Medium devices (desktops, 992px and up) */
 /*$large-container-width:               75em;//1200px /* Large devices (large desktops, 1200px and up) */
 
-@media screen and (min-width: 30em) {
-/*set any custom styles for landscape mobile*/
+@media screen  and (max-width: 30em) {
+
+  .flip-container {
+    /*border: 1px solid red;*/
+   
+  }
+
+
 }
 
 
 /* ==========================================================================
-/*Small devices (tablets,  48em;//768px and down) */
+/*Small devices (tablets,  48em;//768px ) */
 /* ========================================================================== */
 /*$tablet-container-width:              48em;//768px /* Small devices (tablets, 768px and up) */
 /*$desktop-container-width:             62em;//992px /* Medium devices (desktops, 992px and up) */
 /*$large-container-width:               75em;//1200px /* Large devices (large desktops, 1200px and up) */
 
-@media screen and (max-width: $tablet-container-width) {/*48em*/
+@media screen and (max-width: 48em) {/*48em*/
 
 .container {
-  max-width: $tablet-container-width;
-  padding-left: 20px;
-  padding-right: 20px;
+
+  max-width: 48em;
+  padding-left: 10px;
+  padding-right: 10px;
    /* comment these below if not using panel menu*/
   margin-left: auto;
   margin-right: auto;
@@ -907,6 +972,11 @@ nter-text { text-align: center; }
       margin-left: auto;
     }
 }
+
+.flip-container {
+
+/* border: 1px solid green;
+*/}
 .tablet-container-full {
   padding-left: 0;
   padding-right: 0;
@@ -1001,18 +1071,36 @@ nter-text { text-align: center; }
 /*$tablet-container-width:              48em;//768px /* Small devices (tablets, 768px and up) */
 /*$desktop-container-width:             62em;//992px /* Medium devices (desktops, 992px and up) */
 /*$large-container-width:               75em;//1200px /* Large devices (large desktops, 1200px and up) */
-@media screen and (min-width: 53em) {
 
-}
-@media screen and (min-width: $tablet-container-width) {
+@media screen and (min-width: 48em) {
 // Desktop Styles
 
    .container {
-    min-width: 50em;
+    min-width: 48em;
     max-width: 75em;
   }
+  .wrapper {
+    section {
+      .flip-container {
+/*        border: 6px solid white;
+*/        margin-left: 0.20em;
+        margin-right:0.20em;
+      }
+    } 
+  }
+  
 
 
+}
+@media screen and (min-width: 53em) {
+.wrapper {
+    section {
+      .flip-container {
+     /*   border: 8px solid red;*/
+        margin-right:1.5em;
+      }
+    } 
+  }
 }
  
  /* ==========================================================================
@@ -1022,12 +1110,20 @@ nter-text { text-align: center; }
 /*$desktop-container-width:             62em;//992px /* Medium devices (desktops, 992px and up) */
 /*$large-container-width:               75em;//1200px /* Large devices (large desktops, 1200px and up) */
 
-@media screen and (min-width: $desktop-container-width) {
+@media screen and (min-width: 62em) {
 // Large Styles
-
    .container {
-    min-width: $desktop-container-width;
+    min-width: 62em;
   }
+  .wrapper {
+    section {
+      .flip-container {
+        margin-right: 0.5em;
+        margin-left: 0.5em;
+      }
+    } 
+  }
+ 
 
 
 }

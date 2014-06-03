@@ -87,6 +87,7 @@ textarea {
   font-family: sans-serif; }
 
 body {
+  display: tableta;
   margin: 0;
   font-size: 1em;
   line-height: 1.4;
@@ -581,7 +582,11 @@ header[role="banner"] {
     clear: both; }
 
 #main-container {
-  -webkit-transform: translateZ(0); }
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
 
 div[role="main"] {
   position: relative;
@@ -589,6 +594,11 @@ div[role="main"] {
   text-align: center; }
 
 .wrapper {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
   margin: 0 auto;
   width: 100%; }
   .wrapper:after {
@@ -613,25 +623,24 @@ div[role="main"] {
     padding: 0;
     margin: 0 auto; }
   .wrapper section .flip-container {
+    /* -webkit-transform-style: preserve-3d;
+      @include transform(translateZ(-1em));*/
+    /*  @include preserve-3d;*/
     min-width: 23em;
     position: relative;
     margin: 2em;
     padding: 0;
     /* entire container, keeps perspective */
-    /* @include perspective(900px);*/
-    -webkit-transform-style: preserve-3d;
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    -o-transform-style: preserve-3d;
-    transform-style: preserve-3d; }
+    /* @include perspective(900px);*/ }
     .wrapper section .flip-container:after {
       content: "";
       display: table;
       *zoom: 1;
       clear: both; }
     .wrapper section .flip-container .flip-content3D {
+      /*   @include preserve-3d;
+         @include transform(translateZ(-1em));*/
       position: relative;
-      z-index: 1000;
       width: 100%;
       height: 300px;
       padding: 0;
@@ -642,6 +651,7 @@ div[role="main"] {
         *zoom: 1;
         clear: both; }
       .wrapper section .flip-container .flip-content3D figure {
+        padding-top: 20%;
         -moz-perspective: 300px;
         -webkit-perspective: 300px;
         -o-perspective: 300px;
@@ -652,46 +662,84 @@ div[role="main"] {
         -o-backface-visibility: hidden;
         -ms-backface-visibility: hidden;
         backface-visibility: hidden;
-        -webkit-transform: translate3d(0, 0, 0);
         position: absolute;
         width: 100%;
         height: 100%;
-        -webkit-transition: all 0.5s ease 500ms;
-        -moz-transition: all 0.5s ease 500ms;
-        -ms-transition: all 0.5s ease 500ms;
-        -o-transition: all 0.5s ease 500ms;
-        transition: all 0.5s ease 500ms;
         -webkit-border-radius: 20px;
         -moz-border-radius: 20px;
         -o-border-radius: 20px;
         -ms-border-radius: 20px;
         border-radius: 20px;
-        -webkit-box-shadow: 0px 0px 5px #111111;
-        -moz-box-shadow: 0px 0px 5px #111111;
-        -o-box-shadow: 0px 0px 5px #111111;
-        -ms-box-shadow: 0px 0px 5px #111111;
-        box-shadow: 0px 0px 5px #111111;
+        -webkit-box-shadow: 0px 0px 15px #111111;
+        -moz-box-shadow: 0px 0px 15px #111111;
+        -o-box-shadow: 0px 0px 15px #111111;
+        -ms-box-shadow: 0px 0px 15px #111111;
+        box-shadow: 0px 0px 15px #111111;
         border: 4px solid #111111; }
+        .wrapper section .flip-container .flip-content3D figure p {
+          font-size: 1.5em;
+          font-family: "quicksandregular", sans-serif; }
         .wrapper section .flip-container .flip-content3D figure.front {
-          z-index: 900;
+          -webkit-transition: all 0.5s ease 500ms;
+          -moz-transition: all 0.5s ease 500ms;
+          -ms-transition: all 0.5s ease 500ms;
+          -o-transition: all 0.5s ease 500ms;
+          transition: all 0.5s ease 500ms;
+          /*             @include transform(translateZ(-800em)); // orders the back side
+          */
           display: block;
           -webkit-transform: rotateX(0deg);
           -moz-transform: rotateX(0deg);
           -ms-transform: rotateX(0deg);
           -o-transform: rotateX(0deg);
           transform: rotateX(0deg);
+          height: 300px;
+          /*added height here and fixed z-index issue*/
           text-shadow: 0 0 3px #111111;
           color: white; }
+          .wrapper section .flip-container .flip-content3D figure.front h2 {
+            margin-bottom: 2px;
+            font-size: 2em;
+            text-transform: uppercase;
+            color: #444444; }
+          .wrapper section .flip-container .flip-content3D figure.front h3 {
+            font-size: 2.3em;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            margin-top: -10px; }
         .wrapper section .flip-container .flip-content3D figure.back {
-          z-index: 800;
+          z-index: 900;
+          -webkit-transform: rotate(translateZ(800em)) scale(1) skew(1deg) translateX(10px) translateY(10px);
+          -moz-transform: rotate(translateZ(800em)) scale(1) skew(1deg) translateX(10px) translateY(10px);
+          -o-transform: rotate(translateZ(800em)) scale(1) skew(1deg) translateX(10px) translateY(10px);
+          -ms-transform: rotate(translateZ(800em)) scale(1) skew(1deg) translateX(10px) translateY(10px);
+          transform: rotate(translateZ(800em)) scale(1) skew(1deg) translateX(10px) translateY(10px);
+          width: 26em;
+          height: auto;
+          min-height: 300px;
+          -webkit-transition: all 0.5s ease 500ms;
+          -moz-transition: all 0.5s ease 500ms;
+          -ms-transition: all 0.5s ease 500ms;
+          -o-transition: all 0.5s ease 500ms;
+          transition: all 0.5s ease 500ms;
+          padding-top: 5%;
+          margin-left: -8%;
           display: block;
           -webkit-transform: rotateX(-180deg);
           -moz-transform: rotateX(-180deg);
           -ms-transform: rotateX(-180deg);
           -o-transform: rotateX(-180deg);
           transform: rotateX(-180deg);
-          background: #d11250;
-          color: white; }
+          color: white;
+          text-shadow: 0 0 3px #111; }
+          .wrapper section .flip-container .flip-content3D figure.back.one, .wrapper section .flip-container .flip-content3D figure.back.five, .wrapper section .flip-container .flip-content3D figure.back.nine, .wrapper section .flip-container .flip-content3D figure.back.thirteen {
+            background: #ed145b; }
+          .wrapper section .flip-container .flip-content3D figure.back.two, .wrapper section .flip-container .flip-content3D figure.back.six, .wrapper section .flip-container .flip-content3D figure.back.ten, .wrapper section .flip-container .flip-content3D figure.back.fourteen {
+            background: #ff6700; }
+          .wrapper section .flip-container .flip-content3D figure.back.three, .wrapper section .flip-container .flip-content3D figure.back.seven, .wrapper section .flip-container .flip-content3D figure.back.eleven, .wrapper section .flip-container .flip-content3D figure.back.fifteen {
+            background: #006899; }
+          .wrapper section .flip-container .flip-content3D figure.back.four, .wrapper section .flip-container .flip-content3D figure.back.eight, .wrapper section .flip-container .flip-content3D figure.back.twelve, .wrapper section .flip-container .flip-content3D figure.back.sixteen {
+            background: #00a87a; }
       .wrapper section .flip-container .flip-content3D:hover figure.front, .wrapper section .flip-container .flip-content3D:focus figure.front, .wrapper section .flip-container .flip-content3D:active figure.front {
         -moz-perspective: 300px;
         -webkit-perspective: 300px;
@@ -704,7 +752,6 @@ div[role="main"] {
         -o-transform: rotateX(180deg);
         transform: rotateX(180deg); }
       .wrapper section .flip-container .flip-content3D:hover figure.back, .wrapper section .flip-container .flip-content3D:focus figure.back, .wrapper section .flip-container .flip-content3D:active figure.back {
-        z-index: 950;
         -moz-perspective: 300px;
         -webkit-perspective: 300px;
         -o-perspective: 300px;
@@ -729,7 +776,8 @@ div[role="main"] {
 
 /* Fluid Grid */
 .col {
-  float: left;
+  /* float: left;*/
+  display: inline-block;
   padding-left: 10px;
   padding-right: 10px;
   /*  border: 1px solid $bluelight;*/
@@ -937,15 +985,16 @@ nter-text {
   left: -9999em; }
 
 /* ==========================================================================
-/* mobile landscape 30em;//480px  and down) */
+/* mobile landscape 30em;//480px  */
 /* ========================================================================== */
 /*$tablet-container-width:              48em;//768px /* Small devices (tablets, 768px and up) */
 /*$desktop-container-width:             62em;//992px /* Medium devices (desktops, 992px and up) */
 /*$large-container-width:               75em;//1200px /* Large devices (large desktops, 1200px and up) */
-@media screen and (min-width: 30em) {
-  /*set any custom styles for landscape mobile*/ }
+@media screen and (max-width: 30em) {
+  .flip-container {
+    /*border: 1px solid red;*/ } }
 /* ==========================================================================
-/*Small devices (tablets,  48em;//768px and down) */
+/*Small devices (tablets,  48em;//768px ) */
 /* ========================================================================== */
 /*$tablet-container-width:              48em;//768px /* Small devices (tablets, 768px and up) */
 /*$desktop-container-width:             62em;//992px /* Medium devices (desktops, 992px and up) */
@@ -954,14 +1003,18 @@ nter-text {
   /*48em*/
   .container {
     max-width: 48em;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     /* comment these below if not using panel menu*/
     margin-left: auto;
     margin-right: auto;
     border: 1px solid #80b7e8; }
     .container:first-child {
       margin-left: auto; }
+
+  .flip-container {
+    /* border: 1px solid green;
+    */ }
 
   .tablet-container-full {
     padding-left: 0;
@@ -1053,15 +1106,29 @@ nter-text {
 /*$large-container-width:               75em;//1200px /* Large devices (large desktops, 1200px and up) */
 @media screen and (min-width: 48em) {
   .container {
-    min-width: 50em;
-    max-width: 75em; } }
+    min-width: 48em;
+    max-width: 75em; }
+
+  .wrapper section .flip-container {
+    /*        border: 6px solid white;
+    */
+    margin-left: 0.20em;
+    margin-right: 0.20em; } }
+@media screen and (min-width: 53em) {
+  .wrapper section .flip-container {
+    /*   border: 8px solid red;*/
+    margin-right: 1.5em; } }
 /* ==========================================================================*/
 /*$tablet-container-width:              48em;//768px /* Small devices (tablets, 768px and up) */
 /*$desktop-container-width:             62em;//992px /* Medium devices (desktops, 992px and up) */
 /*$large-container-width:               75em;//1200px /* Large devices (large desktops, 1200px and up) */
 @media screen and (min-width: 62em) {
   .container {
-    min-width: 62em; } }
+    min-width: 62em; }
+
+  .wrapper section .flip-container {
+    margin-right: 0.5em;
+    margin-left: 0.5em; } }
 /* ==|== print styles =======================================================
    Print styles.
    Inlined to avoid required HTTP connection: h5bp.com/r

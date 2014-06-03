@@ -69,6 +69,13 @@
     -o-transform-style:preserve-3d;
     transform-style:preserve-3d;
 }
+//Translate Z for z-indexing
+@mixin translateZ($Z) {
+-moz-transform: translateZ($Z);
+-ms-transform: translateZ($Z);
+-webkit-transform: translateZ($Z);
+transform: translateZ($Z);
+}
 //Transform Rotate
 @mixin rotate($transform-angle) {
     -webkit-transform:rotate($transform-angle);
