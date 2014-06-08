@@ -366,7 +366,8 @@ h6, .h6 {
 }
 h1, .h1 {
     font-size: 3em;
-    line-height: 1;
+    /*line-height: 1;*/
+    line-height: 2em;
     margin-bottom: 0.5em;
 }
 h2, .h2 {
@@ -510,8 +511,8 @@ nav {
                 background: $black;
                 color: $greylight;
                 border: 1px solid $greydark;
-                 @include rounded(8);
-                 @include box-shadow-custom(0,0,3px,$greydarkest);
+                @include rounded(8);
+                @include box-shadow-custom(0,0,3px,$greydarkest);
               &:hover {
                 color: $white;
               }
@@ -521,7 +522,7 @@ nav {
     }
   a {
     display: block;
-    background: $bluedeep;
+    background: $white;
     border-top: 1px solid $white;
     border-bottom: 1px solid $bluemedium;
     color: $white;
@@ -581,6 +582,23 @@ div[role="main"] {
   margin: 0 auto;
   text-align: center;
 }
+.main {
+  .row {
+    padding-top:0;
+  }
+}
+.info {
+  h2 {
+    color: $white;
+  }
+  p {
+  width: 90%;
+  color: $white;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 1.9;
+  }
+}
 .wrapper {
    @include preserve-3d;
   margin: 0 auto;
@@ -599,7 +617,6 @@ div[role="main"] {
       margin: 0 auto;
     }
     .flip-container {
-
      /* -webkit-transform-style: preserve-3d;
        @include transform(translateZ(-1em));*/
       /*  @include preserve-3d;*/
@@ -632,9 +649,13 @@ div[role="main"] {
           @include box-shadow-custom(0px, 0px, 15px, $greydarkest);
           border: 4px solid $greydarkest;
           p { 
-           font-size: 1.5em;
+            font-size: 1.1em;
             font-family: "quicksandregular", sans-serif;
+            margin-bottom: 1em;
+            padding-left: 1em;
+            padding-right: 1em;
          }
+
           &.front {
             @include transition(all, 0.5s, ease, 500ms);
 
@@ -652,9 +673,10 @@ div[role="main"] {
               color: $greymid;
             }
             h3 {
-              font-size:2.3em;
-              letter-spacing: -2px;
-              text-transform: uppercase;
+              font-size:1.3em;
+              letter-spacing: 8px;
+              line-height: 5;
+              text-transform: lowercase;
               margin-top: -10px;
             }
           }
@@ -819,6 +841,7 @@ div[role="main"] {
    ========================================================================== */
 
 footer {
+  z-index: 0;
   position: relative;
   margin: 20px auto;
   width: 100%;
@@ -845,7 +868,7 @@ footer {
             text-transform: uppercase;
             background: transparent;
             text-decoration: none;
-            color: $bluedeep;
+            color: $greylight;
             padding: 15px 1.875em; /*1.875em / 30px*/
             margin: 0;
             border: none;
@@ -858,7 +881,7 @@ footer {
             &:focus {
               padding: 15px 1.875em ;/*1.875em / 30px*/
               background: transparent;
-              color: $bluelight;
+              color: $jade;
               span {
                 position: absolute;
                 top: -30px;
@@ -867,8 +890,8 @@ footer {
                 text-transform: lowercase;
                 display: block; 
                 padding: 5px;
-                background: $bluelight;
-                color: $bluedeep;
+                background: $jade;
+                color: $white;
                 @include rounded(8);
                 visibility: visible;
                 &:after {
@@ -880,7 +903,7 @@ footer {
                   left: 12%;
                   border-left: 10px solid transparent;
                   border-right: 10px  solid transparent;
-                  border-top: 10px solid $bluelight;
+                  border-top: 10px solid $jade;;
                 }
               }
             }
@@ -977,6 +1000,7 @@ nter-text { text-align: center; }
 
 /* border: 1px solid green;
 */}
+
 .tablet-container-full {
   padding-left: 0;
   padding-right: 0;
@@ -1071,7 +1095,13 @@ nter-text { text-align: center; }
 /*$tablet-container-width:              48em;//768px /* Small devices (tablets, 768px and up) */
 /*$desktop-container-width:             62em;//992px /* Medium devices (desktops, 992px and up) */
 /*$large-container-width:               75em;//1200px /* Large devices (large desktops, 1200px and up) */
-
+@media screen and (min-width: 40em) {
+    .info {
+  p {
+  @include columns(2);
+  }
+}
+}
 @media screen and (min-width: 48em) {
 // Desktop Styles
 
@@ -1088,7 +1118,11 @@ nter-text { text-align: center; }
       }
     } 
   }
-  
+   .info {
+  p {
+  width: 65%;
+  }
+}
 
 
 }

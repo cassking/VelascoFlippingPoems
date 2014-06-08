@@ -359,7 +359,8 @@ h6, .h6 {
 
 h1, .h1 {
   font-size: 3em;
-  line-height: 1;
+  /*line-height: 1;*/
+  line-height: 2em;
   margin-bottom: 0.5em; }
 
 h2, .h2 {
@@ -528,7 +529,7 @@ nav {
             color: white; }
   nav a {
     display: block;
-    background: #032d57;
+    background: white;
     border-top: 1px solid white;
     border-bottom: 1px solid #4e98de;
     color: white;
@@ -592,6 +593,18 @@ div[role="main"] {
   position: relative;
   margin: 0 auto;
   text-align: center; }
+
+.main .row {
+  padding-top: 0; }
+
+.info h2 {
+  color: white; }
+.info p {
+  width: 90%;
+  color: white;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 1.9; }
 
 .wrapper {
   -webkit-transform-style: preserve-3d;
@@ -677,8 +690,11 @@ div[role="main"] {
         box-shadow: 0px 0px 15px #111111;
         border: 4px solid #111111; }
         .wrapper section .flip-container .flip-content3D figure p {
-          font-size: 1.5em;
-          font-family: "quicksandregular", sans-serif; }
+          font-size: 1.1em;
+          font-family: "quicksandregular", sans-serif;
+          margin-bottom: 1em;
+          padding-left: 1em;
+          padding-right: 1em; }
         .wrapper section .flip-container .flip-content3D figure.front {
           -webkit-transition: all 0.5s ease 500ms;
           -moz-transition: all 0.5s ease 500ms;
@@ -703,9 +719,10 @@ div[role="main"] {
             text-transform: uppercase;
             color: #444444; }
           .wrapper section .flip-container .flip-content3D figure.front h3 {
-            font-size: 2.3em;
-            letter-spacing: -2px;
-            text-transform: uppercase;
+            font-size: 1.3em;
+            letter-spacing: 8px;
+            line-height: 5;
+            text-transform: lowercase;
             margin-top: -10px; }
         .wrapper section .flip-container .flip-content3D figure.back {
           z-index: 900;
@@ -865,6 +882,7 @@ div[role="main"] {
 /* footer
    ========================================================================== */
 footer {
+  z-index: 0;
   position: relative;
   margin: 20px auto;
   width: 100%;
@@ -906,7 +924,7 @@ footer {
           text-transform: uppercase;
           background: transparent;
           text-decoration: none;
-          color: #032d57;
+          color: #777777;
           padding: 15px 1.875em;
           /*1.875em / 30px*/
           margin: 0;
@@ -919,7 +937,7 @@ footer {
             padding: 15px 1.875em;
             /*1.875em / 30px*/
             background: transparent;
-            color: #80b7e8; }
+            color: #039776; }
             footer nav ul li a:hover span, footer nav ul li a:focus span {
               position: absolute;
               top: -30px;
@@ -928,8 +946,8 @@ footer {
               text-transform: lowercase;
               display: block;
               padding: 5px;
-              background: #80b7e8;
-              color: #032d57;
+              background: #039776;
+              color: white;
               -webkit-border-radius: 8px;
               -moz-border-radius: 8px;
               -o-border-radius: 8px;
@@ -945,7 +963,7 @@ footer {
                 left: 12%;
                 border-left: 10px solid transparent;
                 border-right: 10px  solid transparent;
-                border-top: 10px solid #80b7e8; }
+                border-top: 10px solid #039776; }
           footer nav ul li a:after {
             /*default:github*/
             content: "\f113";
@@ -1104,6 +1122,15 @@ nter-text {
 /*$tablet-container-width:              48em;//768px /* Small devices (tablets, 768px and up) */
 /*$desktop-container-width:             62em;//992px /* Medium devices (desktops, 992px and up) */
 /*$large-container-width:               75em;//1200px /* Large devices (large desktops, 1200px and up) */
+@media screen and (min-width: 40em) {
+  .info p {
+    -webkit-column-count: 2;
+    /* Chrome, Safari, Opera */
+    -moz-column-count: 2;
+    /* Firefox */
+    -o-column-count: 2;
+    -ms-column-count: 2;
+    column-count: 2; } }
 @media screen and (min-width: 48em) {
   .container {
     min-width: 48em;
@@ -1113,7 +1140,10 @@ nter-text {
     /*        border: 6px solid white;
     */
     margin-left: 0.20em;
-    margin-right: 0.20em; } }
+    margin-right: 0.20em; }
+
+  .info p {
+    width: 65%; } }
 @media screen and (min-width: 53em) {
   .wrapper section .flip-container {
     /*   border: 8px solid red;*/
