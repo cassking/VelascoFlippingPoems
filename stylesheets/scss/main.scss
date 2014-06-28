@@ -686,7 +686,7 @@ div[role="main"] {
             width: 26em;
             height: auto;
             min-height: 300px;
-            @include transition(all, 0.5s, ease, 500ms);
+            @include transition(all, 0.5s, ease, 200ms);
             padding-top: 5%;
             margin-left: -8%;
             display: block;
@@ -727,11 +727,13 @@ div[role="main"] {
               &.front {
                  @include perspective(300px);
                  @include rotateX(180deg);
+                  background: opacity(0.1);
               }
               &.back {
                  @include perspective(300px);
                  @include rotateX(0deg);
-             
+
+      
               }
             }
           }
@@ -872,6 +874,7 @@ footer {
             padding: 15px 1.875em; /*1.875em / 30px*/
             margin: 0;
             border: none;
+            @include text-shadow($black);
             span {
                text-indent: -9999px;
                display: block; 
@@ -882,6 +885,8 @@ footer {
               padding: 15px 1.875em ;/*1.875em / 30px*/
               background: transparent;
               color: $jade;
+              opacity: 0.7;
+              @include scale(1.3);
               span {
                 position: absolute;
                 top: -30px;
@@ -928,11 +933,18 @@ footer {
         &:nth-child(3) a:after {
           content: "\f08e";
         }
+         &:nth-child(4) a:after {
+          content: "\f08e";
+        }
+        &:nth-child(5) a:after {
+          content: "\f110";
+        }
       }
     }
    
   }
 }
+
 
 /* ==========================================================================
 /* SS Helpers 
@@ -1099,6 +1111,20 @@ nter-text { text-align: center; }
     .info {
   p {
   @include columns(2);
+  &.external {
+    @include columns(1);
+    text-align: center;
+  }
+  }
+  a {
+    text-decoration: none;
+    @include text-shadow($black);
+    color: $orange;
+
+    &:hover {
+      color: $jade;
+ 
+    }
   }
 }
 }

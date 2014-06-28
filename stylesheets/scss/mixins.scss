@@ -61,6 +61,15 @@
     -ms-box-shadow: $horizontal $vertical $blur $color;
     box-shadow: $horizontal $vertical $blur $color;
 }
+//text shadow
+@mixin text-shadow($color: #333333) {
+    -moz-text-shadow: 0px 2px 2px $color;
+  -webkit-text-shadow: 0px 2px 2px $color;
+   -ms-text-shadow: 0px 2px 2px $color;
+    -o-text-shadow: 0px 2px 2px $color;
+    text-shadow: 0px 2px 2px $color;
+}
+
 //Transform perserve3d
 @mixin preserve-3d {
     -webkit-transform-style: preserve-3d;

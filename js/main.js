@@ -1,13 +1,16 @@
 /* ==========================================================
-  Base Default JavaScript
+  Base Scripts
   -- Table of Contents --
 */
 
 
 $(document).ready(function(){
+//smooth scroll only on #
 
-var zindex = $('figure.back').css('z-index');
-			// alert(zindex);
-
+$('a[href*=#]').click(function(event){
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top}, 500);
+    event.preventDefault();
+});
 
 });
